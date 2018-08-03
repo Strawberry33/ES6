@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script src="jquery-1.12.4.js"></script>
+        <script>
+             //回调函数，事件
+        new Promise((resolve,reject)=>{
+            $.get('a.json',res=>{
+                console.log(res);
+                resolve(res.a);//成功
+                //reject();失败
+            })
+        }).then((resA)=>{
+            //成功
+            console.log('a成功');
+            console.log(resA);
+            return new Promise((reslove,reject)=>{
+                $.get('b.json',res=>{
+                    console.log(res);
+                    reslove();
+                });
+            });
+           
+        },()=>{
+            //失败
+            console.log('a失败');
+        }).then(()=>{
+            console.log('b成功');
+            return new Promise((reslove,reject)=>{
+                $.get('c.json',res=>{
+                    console.log(res);
+                    reslove();
+                });
+            });
+        },()=>{
+            console.log('b失败'); 
+        }).then(()=>{
+            console.log('c成功'); 
+        },()=>{
+            console.log('c失败'); 
+        });
+        </script>
+</body>
+</html>
