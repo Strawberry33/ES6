@@ -7,7 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    let a=1;
-    console.log(a);
+    <ul id="nav">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </ul>
+    <script>
+    // let a=1;
+    // console.log(a);
+    // var a = 5;
+    //      function foo() {
+    //          var a = 6;
+    //          console.log('1==' + a);
+    //      }
+    //      foo();
+    //      console.log('2==' + a); 
+    // var aLi=document.querySelectorAll('#nav li');
+    // for(var i=0;i<aLi.length;i++){
+    //     aLi[i].onclick=function(){
+    //         console.log(this.innerHTML);
+    //     }
+    // }
+    // console.log(aLi); 
+    var aLi=document.querySelectorAll('#nav li');
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].index=i;
+        aLi[i].onclick=function(){
+            console.log(this.index);
+        }
+    } 
+
+    </script>
 </body>
 </html>
