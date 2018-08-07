@@ -1,0 +1,11 @@
+#div2 {
+  background: red;
+}
+
+#div1 {
+  width: 200px;
+  height: 200px;
+  background: url(http://127.0.0.1:8081/img/a3811490494c547bc603d4ea7f5379c3.jpg) no-repeat;
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
