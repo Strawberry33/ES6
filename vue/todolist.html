@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    table{
+        background-color: aqua;
+        }
+    table td{
+        border:1px solid green;
+     }
+     table .active{
+         background-color:red;
+     }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr @click="change(val)" v-for='(val,index) in listArr' :class="{'active':val.isred}">
+                <td><input type="checkbox"></td>
+                <td><button>[X]</button></td>
+                <td>{{val.name}}</td>
+                <td>{{val.price}}</td>
+            </tr>
+            <tr>
+                <td><button>删除选中</button></td>
+                <td colspan='3'>总价：{{sum}}</td>
+            </tr>
+        </table>
+
+    </div>
+    <script src="vue.js"></script>
+    <script>
+         let vm = new Vue({
+            el: '#app',
+            data: {
+                sum:0,
+                listArr:[
+                   {
+                      isred:false,
+                       name:"衣服",
+                       price:123
+                   },
+                   {
+                    isred:false,
+                       name:"裤子",
+                       price:564
+                   },
+                   {
+                    isred:false,
+                       name:"鞋",
+                       price:66
+                   },
+                   {
+                    isred:false,
+                       name:"iphonex",
+                       price:8888
+                   },
+                   {
+                    isred:false,
+                       name:"电脑",
+                       price:986
+                   }
+               ]
+            },
+            methods:{
+                change(val){
+                    if(val.isred){
+                        this.sum-=val.price;
+                    }else{
+                        this.sum+=val.price;
+                    }
+                    val.isred=! val.isred;
+                    
+                }
+    
+            }
+        });
+    </script>
+</body>
+</html>
