@@ -26,10 +26,12 @@
 </head>
 <body>
     <div id="app">
+        <h1>Todolist</h1>
+        <hr>
         名称：<input type="text" v-model="name" placeholder="请输入产品名称">
             价格：<input type="number"  v-model.number="price" placeholder="请输入产品价格">
             <button @click="addList">添加</button>
-            <input type="text"  v-model="search">
+            <input type="text"  v-model="search"placeholder="请输入搜索关键字">
             <button @click="searchList">查询</button>
         <table class="box">
             <tr @click="change(val)" v-for='(val,index) in listArr' :class="{'active':val.isred}">
