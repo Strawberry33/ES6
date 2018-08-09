@@ -7,28 +7,35 @@
     <title>Document</title>
     <style>
     table{
-        background-color: aqua;
+        background-color: rgb(248, 198, 198);
         }
     table td{
         border:1px solid green;
+        height:40px;
      }
      table .active{
          background-color:red;
+     }
+     .box{
+         border:0;
+     }
+     .box td{
+         border:0;
      }
     </style>
 </head>
 <body>
     <div id="app">
-        <input type="text" v-model="name">
-        <input type="number"  v-model.number="price">
-        <button @click="addList">添加</button>
-        <input type="text"  v-model="search">
-        <button @click="searchList">添加</button>
-        <table>
+        名称：<input type="text" v-model="name" placeholder="请输入产品名称">
+            价格：<input type="number"  v-model.number="price" placeholder="请输入产品价格">
+            <button @click="addList">添加</button>
+            <input type="text"  v-model="search">
+            <button @click="searchList">查询</button>
+        <table class="box">
             <tr @click="change(val)" v-for='(val,index) in listArr' :class="{'active':val.isred}">
-                <td><input type="checkbox" @click.stop :value="index" v-model="checks"></td>
-                <td><button @click.stop="delList(index)">[X]</button></td>
-                <td>{{val.name}}</td>
+                <td width="80px"><input type="checkbox" @click.stop :value="index" v-model="checks">
+                <button @click.stop="delList(index)">[X]</button></td>
+                <td width="300px">{{val.name}}</td>
                 <td>{{val.price}}</td>
             </tr>
             <tr>
@@ -36,8 +43,8 @@
                 <td colspan='3'>总价：{{sum}}</td>
             </tr>
         </table>
-        <!-- <input type="text" v-model="checks"> -->
-            <!-- {{checks}} -->
+        <!-- <input type="text" v-model="checks"> 
+            {{checks}} -->
     </div>
     <script src="vue.js"></script>
     <script>
