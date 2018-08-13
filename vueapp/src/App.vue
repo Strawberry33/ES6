@@ -56,5 +56,3 @@ export default {
 .content{
   margin: 1rem 0;
 }
-
-</style>
