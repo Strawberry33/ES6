@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <CommonHeader :selectMenu="selectMenu"></CommonHeader>
-    <router-view class="content"/>
-    <CommonFooter @changeTitle="changeTitle" :menuList="menuList"></CommonFooter>
+    <router-view class="content" @switchTab="switchTab"/>
+    <CommonFooter :footerBgColor="selectMenu.bgColor"  @changeTitle="changeTitle" :menuList="menuList"></CommonFooter>
   </div>
 </template>
 
@@ -12,12 +12,19 @@ import CommonFooter from '@/components/CommonFooter.vue';
 export default {
   components: {
     CommonHeader,
-    CommonFooter
+    CommonFooter,
   },
   methods: {
     changeTitle(menu){
       this.selectMenu = menu;
-    }
+    },
+    switchTab(menuName){ // 'music'
+      this.menuList.forEach(menu => {
+        if(menu.name === menuName){
+          this.selectMenu = menu;
+        }
+      });
+    },
   },
   data () {
     return {
@@ -26,27 +33,27 @@ export default {
           title: '电影',
           bgColor: '#e54847',
           name: 'movie',
-          path: '/movie'
+          path: '/movie',
         },{
           title: '音乐',
           bgColor: '#009688',
           name: 'music',
-          path: '/music'
+          path: '/music',
         },{
           title: '书籍',
           bgColor: '#795548',
           name: 'book',
-          path: '/book'
+          path: '/book',
         },{
           title: '图片',
           bgColor: '#3f51b5',
           name: 'photo',
-          path: '/photo'
-        }
+          path: '/photo',
+        },
       ],
-      selectMenu: {} // 当前选中的菜单
+      selectMenu: {}, // 当前选中的菜单,
     }
-  }
+  },
 }
 </script>
 
@@ -56,3 +63,5 @@ export default {
 .content{
   margin: 1rem 0;
 }
+
+</style>
