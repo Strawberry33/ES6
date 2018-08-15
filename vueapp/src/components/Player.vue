@@ -10,10 +10,10 @@
                  <p class="album-info-author">{{albumAuthor}}</p>
                   <div class="album-info-control clearfix">
                     <div class="album-info-control-icon">
-                        <i class="icon iconfont icon-shangyishou" ></i>
-                        <i class="icon iconfont icon-bofang" v-show="!isPlay" ></i>
-                        <i class="icon iconfont icon-zanting" v-show="isPlay"></i>
-                        <i class="icon iconfont icon-xiayishou" ></i>
+                        <i class="icon iconfont icon-shangyishou" @click="prev"></i>
+                        <i class="icon iconfont icon-bofang" v-show="!isPlay" @click="play"></i>
+                        <i class="icon iconfont icon-zanting" v-show="isPlay" @click="pause"></i>
+                        <i class="icon iconfont icon-xiayishou" @click="next"></i>
                     </div>
                     <span class="album-info-control-menu" @click="toggleList=!toggleList">歌单</span>
                     </div>
@@ -22,16 +22,16 @@
          <!-- 歌单 -->
           <transition name="slide">
             <ul class="music-list" v-show="toggleList">
-               <li  @click="selectMusic(music,index)" :class="['music-list-item', nowIndex==index?'selected':'']" v-for="(music,index) in musicList" :key="index">
+               <li  @click="selectMusic(index)" :class="['music-list-item', nowIndex==index?'selected':'']" v-for="(music,index) in musicList" :key="index">
                     <span class="music-list-item-title">{{music.title}}&nbsp;-&nbsp;</span>
                     <span class="music-list-item-author">{{music.author}}</span>
                 </li>
             </ul>
         </transition>
         <!-- 播放控件 -->
-        <div class="audio">
-        <audio  class="audio-ctrl" :src="musicSrc" autoplay controls></audio>
-        </div>
+      <div class="audio">
+           <audio ref="musicAudio" @play="isPlay=true" @pause="isPlay=false" class="audio-ctrl" :src="musicSrc" autoplay controls></audio>
+      </div>
      </div>
 </template>
 
@@ -48,20 +48,42 @@ export default{
             albumAuthor:'',
             isPlay:false,
             toggleList:true,
-            musicSrc:'',
+            musicSrc:"",
             
-       }
+       };
    },
    methods: {
-    selectMusic(music,index) {
+    selectMusic(index) {
       this.nowIndex = index;
-      let nowMusic = this.musicList[this.nowIndex];
-      this.albumImg = nowMusic.musicImgSrc; 
-      this.albumTitle = nowMusic.title;
-      this.albumAuthor = nowMusic.author;
-      this.musicSrc=nowMusic.musicSrc;
+    },
+     play() {
+      this.$refs.musicAudio.play();
+    },
+    pause() {
+      this.$refs.musicAudio.pause();
+    },
+    prev(){
+         this.nowIndex--;
+      if (this.nowIndex == -1) {
+        this.nowIndex = this.musicList.length - 1;
+      }
+    },
+    next(){
+          this.nowIndex++;
+      if (this.nowIndex == this.musicList.length) {
+        this.nowIndex = 0;
+      }
     },
    },
+watch: {
+    nowIndex() {
+      let nowMusic = this.musicList[this.nowIndex];
+      this.albumImg = nowMusic.musicImgSrc;
+      this.albumTitle = nowMusic.title;
+      this.albumAuthor = nowMusic.author;
+      this.musicSrc = nowMusic.src;
+    }
+  }
    
 }
     
@@ -75,7 +97,7 @@ export default{
 }
 .music-list{
     position:fixed;
-    bottom:2rem;
+    bottom:1.8rem;
     background-color: #2a2929;
     width:100%;
     height:4rem;
@@ -151,12 +173,10 @@ export default{
         }
     }
 }
-.audio {
-  background: #fff;
-  height: 1rem;
-  position: fixed;
-  bottom: 1rem;
-  width: 100%;
+.audio{
+    position:fixed;
+    bottom:1rem;
+    width:100%;
   &-ctrl {
     width: 100%;
   }
