@@ -2,6 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Mine from './views/Mine.vue';
+import Test1 from './views/Test1.vue';
+import Test2 from './views/Test2.vue';
+import TestUrl from './views/TestUrl.vue';
 
 
 Vue.use(Router);
@@ -14,6 +17,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+      alias:'/minealias'
     },
     {
       path: '/about',
@@ -25,7 +29,28 @@ export default new Router({
     },
     {
       path:'/mine',
-      component:Mine
+      name:'mine',
+      component:Mine,
+      children:[
+        {
+          path:'test1',
+          name:'test1',
+          component:Test1
+        },
+        {
+          path:'test2',
+          name:'test2',
+          component:Test2
+        }
+      ]
+    },
+    {
+     path:'/testUrl/:userid/:username',
+     component:TestUrl
+    },
+    {
+      path:'/xx/:userid/:username',
+      redirect:'/testUrl/:userid/:username'
     }
   ],
 });

@@ -3,7 +3,12 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
-       <router-link to="/mine">我的</router-link>
+       <router-link to="/mine">我的</router-link> |
+        <router-link :to="{name:'test1', params:{name:'sunruyue', age:18}}">子路由1</router-link> |
+         <router-link to="/mine/test2">子路由2</router-link> |
+        <router-link to="/testUrl/6/lisi">URL传参</router-link> |
+        <router-link to="/xx/8/zhangsan">重定向</router-link> |
+        <router-link to="/minealias">别名</router-link>
 
     </div>
     <router-view/>
