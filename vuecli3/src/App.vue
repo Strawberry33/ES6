@@ -8,10 +8,15 @@
          <router-link to="/mine/test2">子路由2</router-link> |
         <router-link to="/testUrl/6/lisi">URL传参</router-link> |
         <router-link to="/xx/8/zhangsan">重定向</router-link> |
-        <router-link to="/minealias">别名</router-link>
+        <router-link to="/minealias">别名</router-link> |
+         <router-link to="/movie">电影列表</router-link> |
+         <router-link to="/vuex">Vuex</router-link>
+
 
     </div>
-    <router-view/>
+   <transition name="move">
+      <router-view/>
+   </transition>
   </div>
 </template>
 
@@ -32,5 +37,23 @@
       color: #42b983;
     }
   }
+}
+.move-enter{
+      opacity: 0;
+}
+.move-enter-active{
+  transition: opacity 1s ease;
+}
+.move-enter-to{
+   opacity: 1;
+}
+.move-leave{
+    transform: translateX(0);
+}
+.move-leave-active{
+   transition: transform 1s ease;
+}
+.move-leave-to{
+  transform: translateX(100%);
 }
 </style>

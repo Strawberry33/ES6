@@ -5,6 +5,10 @@ import Mine from './views/Mine.vue';
 import Test1 from './views/Test1.vue';
 import Test2 from './views/Test2.vue';
 import TestUrl from './views/TestUrl.vue';
+import Error from './views/Error.vue';
+import Movie from './views/Movie.vue';
+import MovieDetail from './views/MovieDetail.vue'
+import Vuex from './views/Vuex.vue'
 
 
 Vue.use(Router);
@@ -51,6 +55,22 @@ export default new Router({
     {
       path:'/xx/:userid/:username',
       redirect:'/testUrl/:userid/:username'
+    },
+    {
+      path:'*',
+      component:Error
+    },
+    {
+      path:'/movie',
+      component:Movie
+    },
+    {
+      path:'/moviedetail/:movieId',
+      component:MovieDetail
+    },
+    {
+      path:'/vuex',
+      component:Vuex
     }
   ],
 });
