@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aa~li{
+            color: red;
+        }
+        input[type="text"]{
+            background-color: greenyellow;
+        }
+        input[type="text"]:focus{
+            background-color: orange;
+        }
+        #div1{
+            width: 150px;
+            border: 1px solid;
+        }
+        #div1::first-line{
+            background-color: aquamarine;
+        }
+        #ul1 li:first-child{
+            background-color:grey;
+        }
+        #ul1 li:last-child{
+            background-color:grey;
+        }
+        #ul1 li:nth-child(2){
+            background-color:greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul1">
+        <li>001</li>
+        <li>002</li>
+        <li  class="aa">003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+    <input type="text">
+    <input type="text">
+    <input type="password">
+
+    <div id="div1">
+        鸳鸯双嘻蝶双飞，满园春色惹人醉，悄悄问圣僧，女儿美不美、
+    </div>
+</body>
+</html>
