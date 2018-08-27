@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #mask{
+        position :absolute;
+        background:rgba(255,0,0, .5);
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
+
+    }
+    #content{
+        width: 400px;
+        height: 300px;
+        border: 1px solid;
+        margin:200px auto;
+        background: #000;
+        color:white;
+    }
+    </style>
+</head>
+<body>
+    <button>打开</button>
+    <h1>这是个标题</h1>
+    <div id="mask">
+        <div id="content">
+            这是个弹出层
+        </div>
+    </div>
+</body>
+</html>
