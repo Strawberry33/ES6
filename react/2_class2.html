@@ -12,9 +12,14 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        let element = <h1>Hello World!</h1>
+        function Person(props){
+            return(
+                <h1>hello{props.text1}</h1>
+            )
+        }
+        let text='world'
         ReactDOM.render(
-            element,
+            <Person text1={text}/>,
             document.getElementById('root')
         );
     </script>
