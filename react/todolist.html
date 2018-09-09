@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <script src="browser.min.js"></script>
+    <style>
+    table{
+        width: 100%;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+       class ToDoList extends React.Component{
+           constructor (props){
+               super(props);
+               this.state={
+
+           }
+           total(){
+               this.setState({
+                   
+               })
+           }
+           render(){
+               return(
+                 <div>
+                    <h1>sunruyue</h1>
+                  <form class="form-inline">
+                   <div>
+                    待办事项：<input type="text" class="form-control"  placeholder="Jane Doe"/>
+                    待办时间：<input type="text" class="form-control"  placeholder="Jane Doe"/>
+                    预计用时：<input type="text" class="form-control"  placeholder="Jane Doe"/>
+                     <button type="submit" class="btn btn-default">添加</button>
+                     <table class="table table-striped" border="1">
+                        <tr>
+                        <td>待办事项</td> 
+                        <td>待办时间</td>  
+                        <td>预计用时</td> 
+                        <td>操作</td>    
+                         </tr>
+                         <tr>
+                        <td>上课</td> 
+                        <td>2018-09-14</td>  
+                        <td>2</td> 
+                        <td><button>删除</button></td>     
+                         </tr>
+                         <tr>
+                         <td>吃饭</td> 
+                        <td>2018-09-14</td>  
+                        <td>2</td> 
+                        <td><button>删除</button></td>       
+                         </tr>
+                         <tr>
+                        <td>午休</td> 
+                        <td>2018-09-14</td>  
+                        <td>2</td> 
+                        <td><button>删除</button></td>     
+                         </tr>
+                         <tr>
+                         <td>上课</td> 
+                        <td>2018-09-14</td>  
+                        <td>2</td> 
+                        <td><button>删除</button></td>        
+                         </tr>
+                         <tr>
+                        <td>打篮球</td> 
+                        <td>2018-09-14</td>  
+                        <td>2</td> 
+                        <td><button>删除</button></td>       
+                         </tr>
+                         <tr>
+                         <td>上课</td> 
+                        <td>2018-09-14</td>  
+                        <td>2</td> 
+                        <td><button>删除</button></td>      
+                         </tr>
+                        </table>
+                    </div>
+                </form>
+                 </div>
+
+               )
+           }
+       }
+        ReactDOM.render(
+            <ToDoList/>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
