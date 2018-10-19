@@ -49,6 +49,11 @@ export default {
           bgColor: '#3f51b5',
           name: 'photo',
           path: '/photo',
+        },{
+          title: '结算',
+          bgColor: '#3f51b5',
+          name: 'total',
+          path: '/total',
         },
       ],
       selectMenu: {}, // 当前选中的菜单,
