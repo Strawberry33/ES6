@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    li{
+        list-style:none;
+    }
+    #menu{
+        border-bottom: 1px solid;
+    }
+    #container{
+        border:1px solid;
+        width:400px;
+        height:300px;
+        margin:100px auto;
+    }
+    .clearfix::after{
+        content:'';
+        display:block;
+        clear:both;
+    }
+    #menu li{
+        width: 100px;
+        height: 30px;
+        background-color: #ccc;
+        float:left;
+        margin-right:5px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+    #menu .menu-selected{
+            background-color: #000;
+            color: #fff;
+    }
+    #content div{
+        display:none;
+    }
+    #content .content-selected{
+        display:block;
+    }
+    </style>
+</head>
+<body>
+    <div  id="container">
+     <ul id="menu" class="clearfix">
+         <li class="menu-selected">html</li>
+         <li>css</li>
+         <li>javascript</li>
+     </ul>
+     <div id="content">
+         <div class="content-selected">111</div>
+         <div>222</div>
+         <div>333</div>
+     </div>
+    </div>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi=document.getElementsByTagName('li');
+        for(var i=0;i<aLi.length;i++){
+        ali[i].onclick=function(){
+
+        }
+    }
+    </script>
+</body>
+</html>
