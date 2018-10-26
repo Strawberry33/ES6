@@ -27,7 +27,7 @@
         display:block;
         clear:both;
     }
-    #menu li{
+    #menu .item{
         width: 100px;
         height: 30px;
         background-color: #ccc;
@@ -52,9 +52,9 @@
 <body>
     <div  id="container">
      <ul id="menu" class="clearfix">
-         <li class="menu-selected">html</li>
-         <li>css</li>
-         <li>javascript</li>
+         <li class="item menu-selected">html</li>
+         <li class="item">css</li>
+         <li class="item">javascript</li>
      </ul>
      <div id="content">
          <div class="content-selected">111</div>
@@ -64,12 +64,22 @@
     </div>
     <script>
         var oMenu = document.getElementById('menu');
-        var aLi=document.getElementsByTagName('li');
-        for(var i=0;i<aLi.length;i++){
-        ali[i].onclick=function(){
+        var aLi=oMenu.getElementsByTagName('li');
+        var oContent=document.getElementById('content');
+        var aDiv=oContent.getElementsByTagName('div');
+        for(i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick=function(){
+                for(var j=0;j<aLi.length;j++){
+                    aLi[j].className='item';
+                    aDiv[j].className='';
 
+                }
+                this.className += ' menu-selected';
+
+                aDiv[this.index].className='content-selected';
+            }
         }
-    }
     </script>
 </body>
 </html>
