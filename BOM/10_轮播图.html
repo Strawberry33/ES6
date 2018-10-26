@@ -5,8 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+             width: 640px;
+             height: 360px;
+             position: relative;
+             margin: 100px auto;
+        }
+        li{
+            list-style: none;
+        }
+        #imgs img{
+            display:none;
+        }
+        #imgs .selected{
+            display:block;
+        }
+        #menu{
+            position:absolute;
+            right: 10px;
+            bottom:10px;
+        }
+        #menu .item,#arrows span{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            color:aliceblue;
+            margin-right: 5px;
+            text-align: center;
+            cursor: pointer;
+            float: left;
+        }
+        #arrows{
+            position:absolute;
+            left: 10px;
+            bottom:10px;
+        }
+        #menu .menu-selected{
+            background-color: orange;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="container">
+        <div id='imgs'>
+            <img src="img/1.jpg"  class='selected' alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+        </div>
+        <ul id="menu">
+            <li class='item menu-selected'>1</li>
+            <li class="item">2</li>
+            <li  class="item">3</li>
+            <li  class="item">4</li>
+        </ul>
+        <div  id='arrows'>
+            <span id='prev'>&lt; </span>
+            <span id='next'>&gt; </span>
+        </div>
+    </div>
+    <script>
+     var oImgs=document.getElementById('imgs');
+     var aImg=oImgs.getElementsByTagName('img');
+     var oMenu=document.getElementById('menu');
+     var aLi=oMenu.getElementsByTagName('li');
+     var oPrev=document.getElementById('prev');
+     var oNext=document.getElementById('next');
+     var oContainer=document.getElementById('container');
+     var iNowIndex=0;
+     var timer;
+     for(var i=0;i<aLi.length;i++){
+         aLi[i].index=i;
+        aLi[i].onmouseover=function(){
+            iNowIndex=this.index;
+            changeImg();
+        }
+     }
+     oPrev.onclick= oNext.onclick =function(){
+         if(this === oPrev){
+            iNowIndex--;
+            if(iNowIndex==-1){
+             iNowIndex=aLi.length-1;
+             }
+         }else{
+            iNowIndex++;
+            if(iNowIndex==aLi.length){
+             iNowIndex=0;
+        }
+            }
+            changeImg();
+     }
+     oPrev.onselectstart = oNext.onselectstart = function(){
+        return false;
+    };
+     oContainer.onmouseover = function(){
+        clearInterval(timer);
+    };
+     oContainer.onmouseout=function(){
+         play();
+     };
+     play();
+
+     //切换图片
+     function changeImg(){
+        for(var j=0;j<aLi.length;j++){
+                aLi[j].className='item';
+                aImg[j].className='';
+            }
+            aImg[iNowIndex].className= 'selected';
+            aLi[iNowIndex].className +=' menu-selected';
+     }
+     //自动播放
+     function play(){
+        timer=setInterval(function(){
+             oNext.onclick();
+         },4000)
+     }
+    </script>
 </body>
 </html>
