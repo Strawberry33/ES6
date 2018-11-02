@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    点透原因：zepto的tap事件是通过监听绑定到document的touch事件来完成tap事件的模拟
+     而tap事件是通过冒泡触发到document上，在冒泡到document之前 ，用户的手接触屏幕和
+     离开屏幕触发click事件，因为click事件有延迟触发，所以执行完tap事件以后，弹出的
+     选择组件马上就隐藏了，此时click事件还在延迟的300ms之中，当300ms到来
+     的时候click到的其实不是完成而是隐藏之后的下方元素，如果正下方绑定了click事件
+     便会因此触发
+     解决:fastClick.js
+</body>
+</html>
