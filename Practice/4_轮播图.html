@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    #photo{
+
+        margin:0 auto;
+        float: left;
+        flex-grow: 2
+    }
+    #total{
+        width: 1000px;
+        display: flex;
+    }
+    #top{
+        width: 600px;
+    }
+    #left{
+        float:left;
+        width: 300px;
+        margin-right: 30px;
+    }
+    #left img{
+        display:none;
+        width: 300px;
+        height: 480px;
+    }
+    #left .left-selected{
+        display:block;
+    }
+    #right{
+        float:left;
+        width: 270px;
+    }
+    #right img{
+        width: 100px;
+        height: 60px;
+        display: block;
+        margin-bottom: 10px;
+        opacity: 0.6;
+    }
+    #right .right-selected{
+        opacity: 1;
+    }
+    #bottom{
+        clear:both;
+        width: 600px;
+    }
+    #text{
+        float: left;
+        flex-grow: 3;
+    }
+    #all{
+        float: left;
+        flex-grow: 1;
+    }
+    </style>
+</head>
+<body>
+    <div id="total">
+        <div id="photo">
+            <div id="top">
+                <div id="left">
+                    <img class='left-selected' src="1.jpg" alt="">
+                    <img src="2.jpg" alt="">
+                    <img src="3.jpg" alt="">
+                    <img src="4.jpg" alt="">
+                    <img src="5.jpg" alt="">
+                    <img src="6.jpg" alt="">
+                    <img src="7.jpg" alt="">
+                </div>
+                <div id="right">
+                    <img class='right-selected' src="1.jpg" alt="">
+                    <img src="2.jpg" alt="">
+                    <img src="3.jpg" alt="">
+                    <img src="4.jpg" alt="">
+                    <img src="5.jpg" alt="">
+                    <img src="6.jpg" alt="">
+                    <img src="7.jpg" alt="">
+                </div>
+            </div>
+            <div id="bottom">
+                <h3>镜花雪月</h3>
+                <p>ncbyuvfbcdsnxmoiehbv</p>
+            </div>
+        </div>
+        <div id="text">
+            <div id="text-1">
+                <p>神帝失宠：九尾狐妃千千岁</p>
+                <ul>
+                    <li>&lt;穿越重生&gt;&lt;完结&gt;王的女人谁敢动</li>
+                    <li>&lt;婚恋总裁&gt;&lt;连载&gt;一夜密爱：总裁宠婚要亲亲</li>
+                    <li>&lt;婚恋总裁&gt;&lt;完结&gt;豪门：四少只想宠妻</li>
+                    <li>&lt;穿越重生&gt;&lt;完结&gt;重生1988：巧媳当家</li>
+                </ul>
+            </div>
+            <div id="text-2">
+                <p>待我重回之日：天翻地覆之时</p>
+                <ul>
+                    <li>&lt;穿越重生&gt;&lt;完结&gt;王的女人谁敢动</li>
+                    <li>&lt;穿越重生&gt;&lt;完结&gt;王的女人谁敢动</li>
+                    <li>&lt;穿越重生&gt;&lt;完结&gt;王的女人谁敢动</li>
+                    <li>&lt;穿越重生&gt;&lt;完结&gt;王的女人谁敢动</li>
+                </ul>
+            </div>
+        </div>
+        <div id="all">
+            <p>全站推荐榜</p>
+            <ul id="author">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+       var oLeft=document.getElementById('left');
+       var oRight=document.getElementById('right');
+       var aImg=oLeft.getElementsByTagName('img');
+       var aImgs=oRight.getElementsByTagName('img');
+
+       for(i=0;i<aImgs.length;i++){
+            aImgs[i].index=i;
+            aImgs[i].onclick=function(){
+               for(var j=0;j<aImgs.length;j++){
+                    aImg[j].className='';
+                    aImgs[j].className='';
+                } 
+                aImg[this.index].className='left-selected';
+                aImgs[this.index].className='right-selected';
+            }
+        }
+    </script>
+</body>
+</html>
