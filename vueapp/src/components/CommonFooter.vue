@@ -1,4 +1,4 @@
-i<template>
+<template>
     <ul class="footer" :style="{background: footerBgColor}">
         <li class="footer-menu" v-for="(menu, index) in menuList" :key="index">
             <router-link @click.native="selectMenu(menu)" :to="menu.path">{{menu.title}}</router-link>
