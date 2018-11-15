@@ -10,9 +10,7 @@
         <router-link to="/xx/8/zhangsan">重定向</router-link> |
         <router-link to="/minealias">别名</router-link> |
          <router-link to="/movie">电影列表</router-link> |
-         <router-link to="/vuex">Vuex</router-link>
-
-
+         <router-link to="/vuex">Vuex</router-link>|
     </div>
    <transition name="move">
       <router-view/>
