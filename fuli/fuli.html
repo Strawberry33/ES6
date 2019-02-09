@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Document</title>
+    <style>
+        html {
+            width: 110%;
+            font-size: 75%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #lucky {
+            background: url(img/bgimg.png) no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 72.08rem;
+            position: relative;
+        }
+
+        .zhuanpan {
+            width: 26.5rem;
+            height: 27.83rem;
+            margin-left: 2.5rem;
+            position: relative;
+            margin-top: 2.29rem;
+            z-index: 1;
+
+        }
+
+        .zhuanpan img {
+            width: 98%;
+            height: 100%;
+            display: block;
+        }
+
+        #go {
+            width: 6.3rem;
+            height: 7.42rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 9.08rem;
+            margin-left: 9.63rem;
+            z-index: 99;
+        }
+
+        #mixzhuanpan {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-left: 2.7rem;
+            margin-top: 2rem;
+            width: 21rem;
+            z-index:2;
+            transition: all 4s;
+        }
+
+
+        .progress {
+            width: 27.67rem;
+            height: 9.75rem;
+            margin-top: -4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #box {
+            width: 98.1%;
+            height: 6.2%;
+        }
+
+        #box1,
+        #box2,
+        #box3,
+        #box4 {
+            float: left;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        #box1 {
+            width: 4.5rem;
+            height: 3.42rem;
+            margin-left: 4.08rem;
+            margin-top: 6.88rem;
+        }
+
+        #box1 img,
+        #box2 img,
+        #box3 img,
+        #box4 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box2 {
+            width: 5.08rem;
+            height: 3.83rem;
+            margin-left: 10.08rem;
+            margin-top: 6.88rem;
+        }
+
+        #box3 {
+            width: 5.42rem;
+            height: 4.25rem;
+            margin-left: 16.58rem;
+            margin-top: 6.88rem;
+        }
+
+        #box4 {
+            width: 6rem;
+            height: 4.5rem;
+            margin-left: 23.4rem;
+            margin-top: 6.88rem;
+        }
+
+        .lucky-title-x {
+            width: 0.73rem;
+            height: 0.73rem;
+            margin-top: 3.5rem;
+            margin-left: 1.4rem;
+            color: #FFFFFF;
+        }
+
+        .lucky-title-name {
+            width: 7.91rem;
+            height: 0.22rem;
+            font-size: 1.58em;
+            color: #FFFFFF;
+            margin-left: 1.37rem;
+            margin-top: 3rem;
+        }
+
+        .lucky-times {
+            width: 16.25rem;
+            height: 3rem;
+            margin-top: 2.3rem;
+            margin-left: 7.4rem;
+            background: #121185;
+            border-radius: 1.625rem;
+            text-align: center;
+            line-height: 3rem;
+            font-size: 1.17rem;
+        }
+
+        .lucky-times .remain {
+            color: #FFFFFF;
+        }
+
+        .lucky-times #times {
+            color: #FFB519;
+        }
+
+        .lucky-number {
+            width: 100%;
+            height: 1.67rem;
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .number1,
+        .number2,
+        .number3,
+        .number4 {
+            flex-grow: 1;
+            font-size: 1.17rem;
+            color: #262733;
+        }
+
+        .number1 {
+            margin-left: 6rem;
+        }
+
+        .number2,
+        .number3,
+        .number4 {
+            margin-left: 1.5rem;
+        }
+
+        .rules1,
+        .rules2 {
+            width: 4.17rem;
+            height: 1px;
+            border-radius: 0.5px;
+            background-color: #262732;
+            border: 1px solid #FFE500;
+            float: left;
+            margin-top: 2.6rem;
+        }
+
+        .rules1 {
+            margin-left: 7.17rem;
+            ;
+        }
+
+        .rules3 {
+            float: left;
+            margin-top: 1.8rem;
+            width: 5.75rem;
+            height: 1.83rem;
+            font-size: 1.33rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            letter-spacing: 1.04px;
+        }
+
+        .rules-info {
+            clear: both;
+            width: 26rem;
+            height: 17.5rem;
+            margin-left: 3rem;
+            margin-top: 6.31rem;
+            line-height: 21px;
+        }
+
+
+
+        #lucky-mask,
+        #lucky-mask2,
+        #lucky-mask3,
+        #lucky-mask4 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, .6);
+            z-index: 3;
+            display: none;
+        }
+
+        #lucky-mask img,
+        #lucky-mask2 img,
+        #lucky-mask3 img,
+        #lucky-mask4 img {
+            margin-top: 30%;
+            margin-left: 12%;
+            width: 80%;
+            height: 30%;
+        }
+	    #mask,#mask1{
+		top:0;
+		left:0;
+		bottom:0;
+		right:0;
+		position: absolute;
+		z-index:99;
+		background: rgba(0,0,0, .6);
+		display:none;
+	}
+	#mask img{
+		margin-left: 5rem;
+		margin-top:10rem;
+	}
+
+	#mask1 img{
+		margin-left: 12rem;
+        margin-top: 19rem;
+	}
+    </style>
+</head>
+
+<body>
+    <div id="lucky">
+        <div class="lucky-title">
+            <span class="lucky-title-x">&lt;</span>
+            <span class="lucky-title-name">幸运大转盘</span>
+        </div>
+        <div class="lucky-times">
+            <span class="remain">今日剩余次数：</span>
+            <span id="times"></span>
+            <span style="color:#FFB519">次</span>
+        </div>
+        <div class="zhuanpan">
+            <img src="img/zhuanpan.png" alt="">
+            <div id="mixzhuanpan">
+                <img src="img/mixzhuanpan.png">
+            </div>
+            <div id="go">
+                <img src="img/go.png"  alt="">
+            </div>
+        </div>
+        <div id="mask"><img src="img/go.png" alt="" style="width:100px;height:100px"></div>
+	    <div id="mask1"><img src="img/gift.png" alt="" style="width:100px;height:100px"></div>
+        <div class="progress">
+            <img src="img/progress.png" alt="">
+            <div id="box">
+                <div id="box1">
+                    <img src="img/box1.png" alt="">
+                </div>
+                <div id="box2">
+                    <img src="img/box2.png" alt="">
+                </div>
+                <div id="box3">
+                    <img src="img/box3.png" alt="">
+                </div>
+                <div id="box4">
+                    <img src="img/box4.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="lucky-number">
+            <span class="number1">5</span>
+            <span class="number2">30</span>
+            <span class="number3">60</span>
+            <span class="number4">100</span>
+        </div>
+        <div class="rules">
+            <div class="rules1"></div>
+            <span class="rules3">活动规则</span>
+            <div class="rules2"></div>
+        </div>
+        <div class="rules-info">
+            <div class="info-user">
+                用户参加此次活动，
+                <br>即表示用户已经理解并同意活动规则，
+                <br>每位用户需严格遵守规定并完成活动任务后才能获得奖励，
+                <br> 若发现作弊行为则扣除奖励；
+                <br>参与获得即有机会获得金币，
+                <br>次活动为概率中奖，
+                <br>每日参与抽奖达到一定次数可获得高额金币奖励，
+                <br> 已抽奖次数次日清零重新计算。
+                <br>在法律许可范围内获得最终解释权归本软件所有。
+                <br>
+            </div>
+        </div>
+        <div id="lucky-mask">
+            <img src="img/1.gif" alt="">
+        </div>
+        <div id="lucky-mask2">
+            <img src="img/2.gif" alt="">
+        </div>
+        <div id="lucky-mask3">
+            <img src="img/3.gif" alt="">
+        </div>
+        <div id="lucky-mask4">
+            <img src="img/4.gif" alt="">
+        </div>
+    </div>
+    <!-- 解决tap的点透问题 -->
+    <script src="js/fastclick.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/kinerLottery.js"></script>
+    <script src="js/touch.js"></script>
+    <script>
+        var oGo = document.getElementById('go');
+        var oMixzhuanpan = document.getElementById('mixzhuanpan');
+        var oTimes = document.getElementById('times');
+        var count = '100';
+        var oBox1 = document.getElementById('box1');
+        var oBox2 = document.getElementById('box2');
+        var oBox3 = document.getElementById('box3');
+        var oBox4 = document.getElementById('box4');
+        var oLuckyMask = document.getElementById('lucky-mask');
+        var oLuckyMask2 = document.getElementById('lucky-mask2');
+        var oLuckyMask3 = document.getElementById('lucky-mask3');
+        var oLuckyMask4 = document.getElementById('lucky-mask4');
+        oTimes.innerHTML = count;
+        var oMask=document.getElementById('mask');
+		var oMask1=document.getElementById('mask1');
+        oGo.onclick = function () { 
+            count--;
+            oTimes.innerHTML = count;
+        }//Go按键点击事件
+        oBox1.onclick = function () {
+            oLuckyMask.style.display = 'block';
+        }//盒子的点击事件
+        oLuckyMask.onclick = function () {
+            oLuckyMask.style.display = 'none';
+        }//盒子的弹出层
+        oBox2.onclick = function () {
+            oLuckyMask2.style.display = 'block';
+        }
+        oLuckyMask2.onclick = function () {
+            oLuckyMask2.style.display = 'none';
+        }
+        oBox3.onclick = function () {
+            oLuckyMask3.style.display = 'block';
+        }
+        oLuckyMask3.onclick = function () {
+            oLuckyMask3.style.display = 'none';
+        }
+        oBox4.onclick = function () {
+            oLuckyMask4.style.display = 'block';
+        }
+        oLuckyMask4.onclick = function () {
+            oLuckyMask4.style.display = 'none';
+        }
+         var cat = 45; //总共8个扇形区域，每个区域约45度
+         var num = 0; //转圈结束后停留的度数
+         var offOn = true; //是否正在抽奖
+         oGo.onclick = function () {
+             if (offOn) {
+                count--;
+                oTimes.innerHTML = count;
+                 oMixzhuanpan.style.transform = "rotate(0deg)";
+                 offOn = !offOn;
+                 ratating();
+             }
+         }
+         //旋转
+        function ratating() {
+             var timer = null;
+             var rdm = 0; //随机度数
+             clearInterval(timer);
+             timer = setInterval(function () {
+                 if (Math.floor(rdm / 360) < 3) { rdm = Math.floor(Math.random() * 3600); }
+                 else {
+                     oMixzhuanpan.style.transform = "rotate(" + rdm + "deg)";
+                     clearInterval(timer);
+                    setTimeout(function () {
+                         offOn = !offOn;
+                         num = rdm % 360;
+                         if (num <= cat * 1) { oMask1.style.display="block", console.log("rdm=" + rdm + "，num=" + num + "，" + "4999元"); }
+                         else if (num <= cat * 2) {oMask1.style.display="block", console.log("rdm=" + rdm + "，num=" + num + "，" + "50元"); }
+                         else if (num <= cat * 3) {oMask1.style.display="block", console.log("rdm=" + rdm + "，num=" + num + "，" + "10元"); }
+                        else if (num <= cat * 4) { oMask1.style.display="block",console.log("rdm=" + rdm + "，num=" + num + "，" + "5元"); }
+                        else if (num <= cat * 5) {oMask1.style.display="block", console.log("rdm=" + rdm + "，num=" + num + "，" + "免息服务"); }
+                         else if (num <= cat * 6) {oMask1.style.display="block", console.log("rdm=" + rdm + "，num=" + num + "，" + "提交白金"); }
+                        else if (num <= cat * 7) { oMask1.style.display="block",console.log("rdm=" + rdm + "，num=" + num + "，" + "未中奖"); }
+                        else if (num <= cat * 8) { oMask1.style.display="block",console.log("rdm=" + rdm + "，num=" + num + "，" + "未中奖"); }
+                     }, 4000);
+                 }
+             }, 30);
+         }
+         oMask1.onclick=function(){
+             oMask1.style.display="none"
+         }
+    </script>
+</body>
+
+</html>

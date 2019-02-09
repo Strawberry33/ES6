@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Document</title>
+    <style>
+        html {
+            width: 100%;
+            font-size: 75%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .bigBox { width: 23.5rem; height: 23.5rem; position: relative; margin: 0 auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); }
+        .bigBox .outer { width: 100%; height: 100%; position: absolute; z-index: 1; top: 0; left: 0; transform: rotate(0deg); -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); }
+        .bigBox .outer img { width: 100%; }
+        .bigBox .inner { position: relative; width: 5rem; height: 5rem; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 2; background-image: url(./img/go.png); background-size: auto 5rem; background-repeat: no-repeat; }
+        .bigBox .inner.start:active { -webkit-transform: translate(-50%, -50%) scale(.95); -moz-transform: translate(-50%, -50%) scale(.95); -ms-transform: translate(-50%, -50%) scale(.95); -o-transform: translate(-50%, -50%) scale(.95); transform: translate(-50%, -50%) scale(.95); }
+        .bigBox .inner.start { background-position: 0 0; }
+        .bigBox .inner.no-start { background-position: -5rem 0; }
+        .bigBox .inner.completed { background-position: -10rem 0; }
+        #lucky {
+            background: url(img/bgimg.png) no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 72.08rem;
+            position: relative;
+        }
+
+        .zhuanpan {
+            width: 26.5rem;
+            height: 27.83rem;
+            margin-left: 2.5rem;
+            position: relative;
+            margin-top: 2.29rem;
+            z-index: 2;
+
+        }
+
+        #cv {
+            width: 300px;
+            height: 300px;
+            margin-left: -8.1rem;
+            margin-top: -36rem;
+            z-index: 0;
+            position: absolute;
+        }
+
+        #mixzhuanpan {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-left: 2.7rem;
+            margin-top: 2rem;
+            width: 21rem;
+        }
+
+        .zhuanpan img {
+            width: 98%;
+            height: 100%;
+            display: block;
+        }
+
+        .progress {
+            width: 27.67rem;
+            height: 9.75rem;
+            margin-top: -4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #go {
+            width: 6.3rem;
+            height: 7.42rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 9.08rem;
+            margin-left: 9.63rem;
+            z-index: 1;
+        }
+/*
+        #box {
+            width: 98.1%;
+            height: 6.2%;
+        }*/
+        #box1,
+        #box2,
+        #box3,
+        #box4 {
+            float: left;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        #box1 {
+            width: 4.5rem;
+            height: 3.42rem;
+            margin-left: 4.08rem;
+            margin-top: 6.88rem;
+        }
+
+        #box1 img,
+        #box2 img,
+        #box3 img,
+        #box4 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box2 {
+            width: 5.08rem;
+            height: 3.83rem;
+            margin-left: 10.08rem;
+            margin-top: 6.88rem;
+        }
+
+        #box3 {
+            width: 5.42rem;
+            height: 4.25rem;
+            margin-left: 16.58rem;
+            margin-top: 6.88rem;
+        }
+
+        #box4 {
+            width: 6rem;
+            height: 4.5rem;
+            margin-left: 23.4rem;
+            margin-top: 6.88rem;
+        }
+
+        .lucky-title-x {
+            width: 0.73rem;
+            height: 0.73rem;
+            margin-top: 3.5rem;
+            margin-left: 1.4rem;
+            color: #FFFFFF;
+        }
+
+        .lucky-title-name {
+            width: 7.91rem;
+            height: 0.22rem;
+            font-size: 1.58em;
+            color: #FFFFFF;
+            margin-left: 1.37rem;
+            margin-top: 3rem;
+        }
+
+        .lucky-times {
+            width: 16.25rem;
+            height: 3rem;
+            margin-top: 2.3rem;
+            margin-left: 7.4rem;
+            background: #121185;
+            border-radius: 1.625rem;
+            text-align: center;
+            line-height: 3rem;
+            font-size: 1.17rem;
+        }
+
+        .lucky-times .remain {
+            color: #FFFFFF;
+        }
+
+        .lucky-times #times {
+            color: #FFB519;
+        }
+
+        .lucky-number {
+            width: 100%;
+            height: 1.67rem;
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .number1,
+        .number2,
+        .number3,
+        .number4 {
+            flex-grow: 1;
+            font-size: 1.17rem;
+            color: #262733;
+        }
+
+        .number1 {
+            margin-left: 6rem;
+        }
+
+        .number2,
+        .number3,
+        .number4 {
+            margin-left: 1.5rem;
+        }
+
+        .rules1,
+        .rules2 {
+            width: 4.17rem;
+            height: 1px;
+            border-radius: 0.5px;
+            background-color: #262732;
+            border: 1px solid #FFE500;
+            float: left;
+            margin-top: 2.6rem;
+        }
+
+        .rules1 {
+            margin-left: 7.17rem;
+            ;
+        }
+
+        .rules3 {
+            float: left;
+            margin-top: 1.8rem;
+            width: 5.75rem;
+            height: 1.83rem;
+            font-size: 1.33rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            letter-spacing: 1.04px;
+        }
+
+        .rules-info {
+            clear: both;
+            width: 26rem;
+            height: 17.5rem;
+            margin-left: 3rem;
+            margin-top: 6.31rem;
+            line-height: 21px;
+        }
+
+
+
+        #lucky-mask,
+        #lucky-mask2,
+        #lucky-mask3,
+        #lucky-mask4 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, .6);
+            z-index: 3;
+            display: none;
+        }
+
+        #lucky-mask img,
+        #lucky-mask2 img,
+        #lucky-mask3 img,
+        #lucky-mask4 img {
+            margin-top: 30%;
+            margin-left: 12%;
+            width: 80%;
+            height: 30%;
+        }
+
+        #mixzhuanpans img {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        #mixzhuanpans {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .gift {
+            margin-left: 6.5rem;
+            margin-top: 2.7rem;
+        }
+
+        .gold {
+            margin-left: 2.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .goldsmall {
+            margin-left: 6rem;
+            margin-top: 1rem;
+        }
+
+        .gift2 {
+            margin-left: 2rem;
+            margin-top: 2rem;
+        }
+
+        .goldbig {
+            margin-left: 15.5rem;
+            margin-top: -7rem;
+        }
+
+        .gift3 {
+            margin-left: 11.5rem;
+            margin-top: -3rem;
+        }
+
+        .goldmore {
+            margin-left: 11.5rem;
+            margin-top: -6.5rem;
+        }
+
+        .gift4 {
+            margin-left: 15rem;
+            margin-top: -8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lucky">
+        <div class="lucky-title">
+            <span class="lucky-title-x">&lt;</span>
+            <span class="lucky-title-name">幸运大转盘</span>
+        </div>
+        <div class="lucky-times">
+            <span class="remain">今日剩余次数：</span>
+            <span id="times"></span>
+            <span style="color:#FFB519">次</span>
+        </div>
+        <!--<div class="zhuanpan">
+            <img src="img/zhuanpan.png" alt="">
+            <div id="mixzhuanpan">
+                <img src="img/mixzhuanpan.png" alt="">
+            </div>
+            <div id="go">
+                <img src="img/go.png" alt="">
+
+            </div>
+            <div id="cv">
+                <canvas id="wheelcanvas" width="400" height="400"></canvas>
+            </div>
+        </div>-->
+        <div class="zhuanpan">
+            <div id="box" class="bigBox">
+                <div class="outer KinerLottery KinerLotteryContent">
+                    <img src="img/zhuanpan.png">
+                </div>
+                <!-- 大专盘分为三种状态：活动未开始（no-start）、活动进行中(start)、活动结束(completed),可通过切换class进行切换状态，js会根据这3个class进行匹配状态 -->
+                <div class="inner KinerLotteryBtn start"></div>
+
+            </div>
+        </div>
+        <div class="progress">
+            <img src="img/progress.png" alt="">
+            <div id="box5">
+                <div id="box1">
+                    <img src="img/box1.png" alt="">
+                </div>
+                <div id="box2">
+                    <img src="img/box2.png" alt="">
+                </div>
+                <div id="box3">
+                    <img src="img/box3.png" alt="">
+                </div>
+                <div id="box4">
+                    <img src="img/box4.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="lucky-number">
+            <span class="number1">5</span>
+            <span class="number2">30</span>
+            <span class="number3">60</span>
+            <span class="number4">100</span>
+        </div>
+        <div class="rules">
+            <div class="rules1"></div>
+            <span class="rules3">活动规则</span>
+            <div class="rules2"></div>
+        </div>
+        <div class="rules-info">
+            <div class="info-user">
+                用户参加此次活动，
+                <br>即表示用户已经理解并同意活动规则，
+                <br>每位用户需严格遵守规定并完成活动任务后才能获得奖励，
+                <br> 若发现作弊行为则扣除奖励；
+                <br>参与获得即有机会获得金币，
+                <br>次活动为概率中奖，
+                <br>每日参与抽奖达到一定次数可获得高额金币奖励，
+                <br> 已抽奖次数次日清零重新计算。
+                <br>在法律许可范围内获得最终解释权归本软件所有。
+                <br>
+            </div>
+        </div>
+        <div id="lucky-mask">
+            <img src="img/1.gif" alt="">
+        </div>
+        <div id="lucky-mask2">
+            <img src="img/2.gif" alt="">
+        </div>
+        <div id="lucky-mask3">
+            <img src="img/3.gif" alt="">
+        </div>
+        <div id="lucky-mask4">
+            <img src="img/4.gif" alt="">
+        </div>
+    </div>
+    <div id="mask"><img src="" alt="" style="width:100px;height:100px"></div>
+    <div id="mask1"><img src="" alt="" style="width:100px;height:100px"></div>
+    <!-- 解决tap的点透问题 -->
+    <script src="js/fastclick.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/kinerLottery.js"></script>
+    <script src="js/touch.js"></script>
+    <!--<script>
+        var oGo = document.getElementById('go');
+        var oMixzhuanpan = document.getElementById('mixzhuanpan');
+        var oTimes = document.getElementById('times');
+        var count = '100';
+        var oBox1 = document.getElementById('box1');
+        var oBox2 = document.getElementById('box2');
+        var oBox3 = document.getElementById('box3');
+        var oBox4 = document.getElementById('box4');
+        var oLuckyMask = document.getElementById('lucky-mask');
+        var oLuckyMask2 = document.getElementById('lucky-mask2');
+        var oLuckyMask3 = document.getElementById('lucky-mask3');
+        var oLuckyMask4 = document.getElementById('lucky-mask4');
+        oTimes.innerHTML = count;
+        oGo.onclick = function () {
+            oMixzhuanpan.className = 'gochange';
+            count&#45;&#45;;
+            oTimes.innerHTML = count;
+            spin();
+        }
+        oBox1.onclick = function () {
+            oLuckyMask.style.display = 'block';
+        }
+        oLuckyMask.onclick = function () {
+            oLuckyMask.style.display = 'none';
+        }
+        oBox2.onclick = function () {
+            oLuckyMask2.style.display = 'block';
+        }
+        oLuckyMask2.onclick = function () {
+            oLuckyMask2.style.display = 'none';
+        }
+        oBox3.onclick = function () {
+            oLuckyMask3.style.display = 'block';
+        }
+        oLuckyMask3.onclick = function () {
+            oLuckyMask3.style.display = 'none';
+        }
+        oBox4.onclick = function () {
+            oLuckyMask4.style.display = 'block';
+        }
+        oLuckyMask4.onclick = function () {
+            oLuckyMask4.style.display = 'none';
+        }
+        var colors = ["#FFFCF3", "#FEF1BA", "#FFFCF3", "#FEF1BA", "#FFFCF3", "#FEF1BA", "#FFFCF3", "#FEF1BA"];
+        var restaraunts = ["", "", "", "", "", "", "", ""];
+        var startAngle = 0;
+        var arc = Math.PI / 4; //转盘的份数
+        var spinTimeout = null;
+        var spinArcStart = 10;
+        var spinTime = 0;
+        var spinTimeTotal = 0;
+        var ctx;
+        var imgObj = new Image();
+        imgObj.src = "img/gift.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 200, 150, 40, 40);
+        }
+        var imgObj2 = new Image();
+        imgObj2.src = "img/gold.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj2.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 265, 150, 40, 40);
+        }
+        var imgObj3 = new Image();
+        imgObj3.src = "img/goldbig.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj3.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 150, 200, 40, 40);
+        }
+        var imgObj4 = new Image();
+        imgObj4.src = "img/gift.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj4.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 150, 265, 40, 40);
+        }
+        var imgObj5 = new Image();
+        imgObj5.src = "img/goldsmall.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj5.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 200, 310, 40, 40);
+        }
+        var imgObj6 = new Image();
+        imgObj6.src = "img/gift.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj6.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 265, 310, 40, 40);
+        }
+        var imgObj7 = new Image();
+        imgObj7.src = "img/goldmore.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj7.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 310,265, 40, 40);
+        }
+        var imgObj8 = new Image();
+        imgObj8.src = "img/gift.png";
+        //待图片加载完后，将其显示在canvas上
+        imgObj8.onload = function () { //onload必须使用 
+            var canvas = document.getElementById("wheelcanvas");
+            ctx = canvas.getContext('2d');
+            ctx.drawImage(this, 310, 200, 40, 40);
+        }
+        function draw() {
+            drawRouletteWheel();
+        }
+        function drawRouletteWheel() {
+            var canvas = document.getElementById("wheelcanvas");
+            if (canvas.getContext) {
+                var outsideRadius = 0;
+                var textRadius = 80;
+                var insideRadius = 125;
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, 500, 500);
+                ctx.strokeStyle = "#FFFFFF";
+                ctx.lineWidth = 2;
+                ctx.font = 'bold 12px sans-serif';
+                for (var i = 0; i < 8; i++) {
+                    var angle = startAngle + i * arc;
+                    ctx.fillStyle = colors[i];
+                    ctx.beginPath();
+                    ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
+                    ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
+                    ctx.stroke();
+                    ctx.fill();
+                    ctx.save();
+                    ctx.shadowOffsetX = -1;
+                    ctx.shadowOffsetY = -1;
+                    ctx.shadowBlur = 0;
+                    ctx.shadowColor = "rgb(220,220,220)";
+                    ctx.fillStyle = "black";
+                    ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 250 + Math.sin(angle + arc / 2) * textRadius);
+                    ctx.rotate(angle + arc / 2 + Math.PI / 2);
+                   
+                    ctx.restore();
+                }
+                //Arrow
+                ctx.fillStyle = "black";
+                ctx.beginPath();
+                ctx.fill();
+            }
+        }
+        function spin() {
+            spinAngleStart = Math.random() * 10 + 10;
+            spinTime = 0;
+            spinTimeTotal = Math.random() * 3 + 4 * 1000;
+            rotateWheel();
+        }
+        function rotateWheel() {
+            spinTime += 30;
+            if (spinTime >= spinTimeTotal) {
+                stopRotateWheel();
+                return;
+            }
+            var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+            startAngle += (spinAngle * Math.PI / 180);
+            drawRouletteWheel();
+            spinTimeout = setTimeout('rotateWheel()', 30);
+        }
+        function stopRotateWheel() {
+            clearTimeout(spinTimeout);
+            var degrees = startAngle * 180 / Math.PI + 90;
+            var arcd = arc * 180 / Math.PI;
+            var index = Math.floor((360 - degrees % 360) / arcd);
+            ctx.save();
+            ctx.font = 'bold 20px sans-serif';
+            
+            ctx.restore();
+        }
+        function easeOut(t, b, c, d) {
+            var ts = (t /= d) * t;
+            var tc = ts * t;
+            return b + c * (tc + -3 * ts + 3 * t);
+        }
+        draw();
+    </script>-->
+    <script>
+        var oLuckyMask = document.getElementById('lucky-mask');
+        var oLuckyMask2 = document.getElementById('lucky-mask2');
+        var oLuckyMask3 = document.getElementById('lucky-mask3');
+        var oLuckyMask4 = document.getElementById('lucky-mask4');
+        var oBox1 = document.getElementById('box1');
+        var oBox2 = document.getElementById('box2');
+        var oBox3 = document.getElementById('box3');
+        var oBox4 = document.getElementById('box4');
+        oBox1.onclick = function () {
+            oLuckyMask.style.display = 'block';
+        }
+        oLuckyMask.onclick = function () {
+            oLuckyMask.style.display = 'none';
+        }
+        oBox2.onclick = function () {
+            oLuckyMask2.style.display = 'block';
+        }
+        oLuckyMask2.onclick = function () {
+            oLuckyMask2.style.display = 'none';
+        }
+        oBox3.onclick = function () {
+            oLuckyMask3.style.display = 'block';
+        }
+        oLuckyMask3.onclick = function () {
+            oLuckyMask3.style.display = 'none';
+        }
+        oBox4.onclick = function () {
+            oLuckyMask4.style.display = 'block';
+        }
+        oLuckyMask4.onclick = function () {
+            oLuckyMask4.style.display = 'none';
+        }
+        /**
+         * 根据转盘旋转角度判断获得什么奖品
+         * @param deg
+         * @returns {*}
+         */
+        var oMask=document.getElementById('mask');
+        var oMask1=document.getElementById('mask1');
+        var whichAward = function (deg) {
+            if (deg > 0 && deg <= 45) {
+                oMask1.style.display="block";
+            } else if ((deg > 45 && deg <= 90)) {
+                oMask.style.display="block";
+            } else if (deg > 90 && deg <= 135) {
+                oMask1.style.display="block";
+            } else if (deg > 135 && deg <= 180) {
+                oMask.style.display="block";
+            } else if (deg > 180 && deg <= 225) {
+                oMask1.style.display="block";
+            } else if (deg > 225 && deg <= 270) {
+                oMask.style.display="block";
+            }else if (deg > 270 && deg <= 315) {
+                oMask1.style.display="block";
+            }else if (deg > 315 && deg <= 360) {
+                return "200金币";
+            }
+        };
+        var KinerLottery = new KinerLottery({
+            rotateNum: 8, //转盘转动圈数
+            body: "#box", //大转盘整体的选择符或zepto对象
+            direction: 0, //0为顺时针转动,1为逆时针转动
+            disabledHandler: function (key) {
+                switch (key) {
+                    case "noStart":
+                        alert("活动尚未开始");
+                        break;
+                    case "completed":
+                        alert("活动已结束");
+                        break;
+                }
+            }, //禁止抽奖时回调
+            clickCallback: function () {
+                //此处访问接口获取奖品
+                function random() {
+                    return Math.floor(Math.random() * 360);
+                }
+                this.goKinerLottery(random());
+            }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
+            KinerLotteryHandler: function (deg) {
+                alert("恭喜您获得:" + whichAward(deg));
+
+            } //抽奖结束回调
+        });
+    </script>
+</body>
+
+</html>

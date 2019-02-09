@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div  id='example'>
+        <input type="text" v-model='msg'>
+        <child v-model='msg'></child>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+    Vue.component('child', {
+      props: ['value'],
+      template: '<input type="text" @input="handleInput" :value=value />',
+      methods: {
+        handleInput(e){
+          console.log(e);
+          this.$emit('input', e.target.value);
+        }
+      }
+    })
+   new Vue({
+    el:'#example',
+    data:{
+      msg:'好天气',
+      parentMsg:''
+    }
+   }) 
+    </script>
+</body>
+</html>

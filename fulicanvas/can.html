@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="canvas">
+            <canvas id="myCanvas" width="1024" height="768" style="border:1px solid #ccc;margin:20px auto;display: block;"></canvas>
+            <img src="img/gift.png" alt="" id="gift1">
+            <img src="img/gold.png" alt="" id="gold">
+            <img src="img/gift.png" alt="" id="gift2">
+            <img src="img/goldbig.png" alt="" id="goldbig">
+            <img src="img/gift.png" alt="" id="gift3">
+            <img src="img/goldsmall.png" alt="" id="goldsmall">
+            <img src="img/gift.png" alt="" id="gift4">
+            <img src="img/goldmore.png" alt="" id="goldmore">
+    </div>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        $('.btn').click(function() {
+            $('.pho-bg').hide();
+            // $('#myCanvas').show();
+            var gift1 = document.getElementById("gift1"),
+                gift2 = document.getElementById("gift2"),
+                gift3 = document.getElementById("gift3"),
+                gift4 = document.getElementById("gift4"),
+                btn1 = document.getElementById("btn1"),
+                canvasBg = document.getElementById("bg1");
+        
+  
+            var canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            canvas.width = 750;
+            canvas.height = 1180;
+            // 制作背景图
+            var patBg = ctx.createPattern(canvasBg, "repeat");
+            ctx.rect(0, 0, 750, 1180);
+            ctx.fillStyle = patBg;
+            ctx.fill();
+            // 将man1,man2,man3,man4,sen1,btn加入画布
+            ctx.drawImage(man1, 0, 0, 341, 474);
+            ctx.drawImage(man2, 410, 0, 341, 474);
+            ctx.drawImage(man3, 0, 474, 341, 474);
+            ctx.drawImage(man4, 410, 474, 341, 474);
+ 
+            ctx.drawImage(sen1, 40, 950, 669, 109);
+            ctx.drawImage(btn1, 150, 350, 449, 288);
+            var newImg = new Image();
+            newImg.src = canvas.toDataURL("image/png");
+ 
+            $('.photo').append(newImg);
+ 
+        });
+    </script>
+
+</body>
+
+</html>
