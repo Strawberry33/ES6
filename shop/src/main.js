@@ -7,10 +7,11 @@ Vue.config.productionTip = false
 
 import '@/assets/css/reset.css'
 import '@/assets/js/rem.js'
-import { Icon, NavBar, Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload } from 'vant';
+import { Icon, NavBar, Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload,Button} from 'vant';
 
-Vue.use(Icon).use( NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload);
+Vue.use(Icon).use( NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload).use(Button);
 
+import '@/mock/mock.js';
 new Vue({
   router,
   store,
